@@ -1,3 +1,5 @@
+# This script pulls in an html table of currency types and then parses it into a csv file
+# Data imported includes country/currency name, code, and unicode symbol
 # Import libraries
 import requests
 import urllib.request
@@ -31,8 +33,8 @@ def parseCode(codeString):
 	else:
 		return chr(int(codeString))
 
-
-url = "https://www.xe.com/symbols.php"
+#This is a general scraping script to be used with an arbitrary html table of values
+url = ""
 response = requests.get(url)
 soup = BeautifulSoup(response.text, "html.parser")
 
@@ -45,6 +47,7 @@ codes = []
 uni = []
 
 for i in range(numResults):
+	#Change indices as necessary for your source document
 	countryName+=[result[i+1].findAll('td')[0].text]
 	codes+=[result[i+1].findAll('td')[1].text]
 	uni+=[result[i+1].findAll('td')[5].text]
