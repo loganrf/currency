@@ -52,3 +52,16 @@ for i in range(numResults):
 for i in uni:
 	if(i!=''):
 		print(parseCode(i))
+
+
+outputFile = open('currencyData.csv','w+')
+
+i = len(countryName)
+
+for j in range(i):
+	if(uni[j]!=''):
+		outputFile.write(countryName[j]+';'+codes[j]+';'+parseCode(uni[j])+'\n')
+	else:
+		outputFile.write(countryName[j]+';'+codes[j]+';NONE\n')
+
+outputFile.close()
